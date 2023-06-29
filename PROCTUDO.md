@@ -21,5 +21,5 @@ coluna_a_retornar
 
 **Definição da fórmula:**
 ```
-=JOIN("; ";UNIQUE(QUERY(tabela_a_consultar;"select "& SUBSTITUIR(ENDEREÇO(1;CORRESP(coluna_a_retornar;cabecalho_da_tabela;0); 4); 1; "") &" where "& SUBSTITUIR(ENDEREÇO(1;CORRESP(coluna_a_pesquisar;cabecalho_da_tabela;0); 4); 1; "") &"='informacao_a_pesquisar'"; FALSO)))
+=JOIN("; ";UNIQUE(QUERY(tabela_a_consultar;"select "& SUBSTITUIR(ENDEREÇO(1;CORRESP(coluna_a_retornar;cabecalho_da_tabela;0); 4); 1; "") &" where "& SUBSTITUIR(ENDEREÇO(1;CORRESP(coluna_a_pesquisar;cabecalho_da_tabela;0); 4); 1; "") &"="&SE(TIPO(informacao_a_pesquisar)=2;"'"&informacao_a_pesquisar&"'";informacao_a_pesquisar); FALSO)))
 ```
