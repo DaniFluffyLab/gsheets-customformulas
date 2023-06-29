@@ -1,2 +1,2 @@
-# gsheets-customformulas
-Fórmulas customizadas que eu costumo usar no Google Sheets para facilitar minha vida...
+# Fórmulas customizadas para Google Sheets
+Nesse repositório ficará guardado algumas fórmulas e minimacros que otimizam minha vida quando estou usando o Google Planilhas. 
