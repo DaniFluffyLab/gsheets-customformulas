@@ -57,7 +57,7 @@ cpf
     FALSO
 )
 ```
-**Versão para uso no GAS**
+**Versão para uso no Google Apps Script:**
 ```javascript
 
 function cpfCheck(dado) {
