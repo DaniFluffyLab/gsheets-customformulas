@@ -59,7 +59,14 @@ cpf
 ```
 **Versão para uso no Google Apps Script:**
 ```javascript
-
+/**
+ *  Valida o CPF, verificando os dois dígitos verificadores.
+ *  O CPF deve ser formatado como texto e não ter ponto ou traço.
+ *
+ * @param {string} dado
+ * @returns {boolean}
+ * @customfunction
+ */
 function cpfCheck(dado) {
   
     // Checa se selecionada várias células
@@ -70,7 +77,7 @@ function cpfCheck(dado) {
   
         let linharesultado = []
         linha.forEach((celula) => {
-          linharesultado.push(InternalValidateCPF(celula))
+          linharesultado.push(InternalValidateCPF_(celula))
         })
         dadoresultado.push(linharesultado)
       })
@@ -78,10 +85,10 @@ function cpfCheck(dado) {
     } 
   
     // Se não é Array, retornar resultado
-    else return InternalValidateCPF(dado) 
+    else return InternalValidateCPF_(dado) 
   }
 
-function InternalValidateCPF(cpf) { // Verifica se CPF existe
+function InternalValidateCPF_(cpf) { // Verifica se CPF existe
 
     // Ignorar verificação de CPFs?
     try {
