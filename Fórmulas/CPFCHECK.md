@@ -62,73 +62,76 @@ cpf
 /**
  *  Valida o CPF, verificando os dois dígitos verificadores.
  *  O CPF deve ser formatado como texto e não ter ponto ou traço.
+ *  
+ *  Função por: https://github.com/DaniFluffyLab
  *
- * @param {string} dado
+ * @param {string} cpf
  * @returns {boolean}
  * @customfunction
  */
-function cpfCheck(dado) {
-  
-    // Checa se selecionada várias células
-    if(Array.isArray(dado)) {
-  
-      let dadoresultado = []
-      dado.forEach( (linha) => {
-  
-        let linharesultado = []
-        linha.forEach((celula) => {
-          linharesultado.push(InternalValidateCPF_(celula))
+
+function cpfcheck(cpf) {
+
+    // Se for dado único, executar função
+    if (!Array.isArray(cpf)) return cpfcheck_(cpf)
+
+    // Se array, separar dados e executar função 
+    let arrayValue = cpf
+    let arrayReturn = []
+    arrayValue.forEach((row) => {
+        let rowReturn = []
+        row.forEach((cell) => {
+            rowReturn.push(
+
+                // Fórmula a calcular
+                cpfcheck_(cell)
+
+            )
         })
-        dadoresultado.push(linharesultado)
-      })
-      return dadoresultado
-    } 
-  
-    // Se não é Array, retornar resultado
-    else return InternalValidateCPF_(dado) 
-  }
+        arrayReturn.push(rowReturn)
+    })
+    return arrayReturn
 
-function InternalValidateCPF_(cpf) { // Verifica se CPF existe
 
-    // Ignorar verificação de CPFs?
-    try {
-      if (bypasscpf == true) return true
-    } catch (e) { }
-  
-    // Verificar se possui outros caracteres
-    if (cpf.length != 11) return false;
-  
-    // Elimina CPFs invalidos conhecidos	
-    if (cpf.length != 11 ||
-      cpf == "00000000000" ||
-      cpf == "11111111111" ||
-      cpf == "22222222222" ||
-      cpf == "33333333333" ||
-      cpf == "44444444444" ||
-      cpf == "55555555555" ||
-      cpf == "66666666666" ||
-      cpf == "77777777777" ||
-      cpf == "88888888888" ||
-      cpf == "99999999999") return false;
-  
-    // Valida 1o digito	
-    add = 0;
-    for (i = 0; i < 9; i++)
-      add += parseInt(cpf.charAt(i)) * (10 - i);
-    rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
-      rev = 0;
-    if (rev != parseInt(cpf.charAt(9))) return false;
-  
-    // Valida 2o digito	
-    add = 0;
-    for (i = 0; i < 10; i++)
-      add += parseInt(cpf.charAt(i)) * (11 - i);
-    rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11)
-      rev = 0;
-    if (rev != parseInt(cpf.charAt(10))) return false;
-  
-    return true;
-  }
+    // Função a executar
+    function cpfcheck_(cpf) { // Verifica se CPF existe
+      
+        // Verificar se possui outros caracteres
+        if (cpf.length != 11) return false;
+      
+        // Elimina CPFs invalidos conhecidos	
+        if (cpf.length != 11 ||
+          cpf == "00000000000" ||
+          cpf == "11111111111" ||
+          cpf == "22222222222" ||
+          cpf == "33333333333" ||
+          cpf == "44444444444" ||
+          cpf == "55555555555" ||
+          cpf == "66666666666" ||
+          cpf == "77777777777" ||
+          cpf == "88888888888" ||
+          cpf == "99999999999") return false;
+      
+        // Valida 1o digito	
+        add = 0;
+        for (i = 0; i < 9; i++)
+          add += parseInt(cpf.charAt(i)) * (10 - i);
+        rev = 11 - (add % 11);
+        if (rev == 10 || rev == 11)
+          rev = 0;
+        if (rev != parseInt(cpf.charAt(9))) return false;
+      
+        // Valida 2o digito	
+        add = 0;
+        for (i = 0; i < 10; i++)
+          add += parseInt(cpf.charAt(i)) * (11 - i);
+        rev = 11 - (add % 11);
+        if (rev == 10 || rev == 11)
+          rev = 0;
+        if (rev != parseInt(cpf.charAt(10))) return false;
+      
+        return true;
+      }
+
+}
 ```
