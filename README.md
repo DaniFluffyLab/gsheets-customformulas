@@ -1,5 +1,5 @@
 > [!IMPORTANT]  
-> **Este repositório foi desativado.**
+> **Este repositório foi desativado.** <br>
 > Estou organizando todas as minhas fórmulas (e outros minicódigos) [aqui](https://danifluffylab.github.io/toolbox/).
 
 # Fórmulas customizadas para Google Sheets
